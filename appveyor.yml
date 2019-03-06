@@ -1,11 +1,10 @@
 notifications:
   - provider: GitHubPullRequest
-    template: "{{#passed}}:white_check_mark:{{/passed}}{{#failed}}:x:{{/failed}} [Build {{projectName}} {{buildVersion}} {{status}}]({{buildUrl}}) (commit {{commitUrl}} by @{{commitAuthorUsername}})"
 
 build_script:
   - cd C:\
 test_script:
-  - echo "https://ci.appveyor.com/api/projects/<account>/{{&projectName}}/artifacts/"
+  - echo "hello"
 artifacts:
   - path: test.txt
     name: artifact
