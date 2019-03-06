@@ -1,0 +1,6 @@
+notifications:
+  - provider: GitHubPullRequest
+    template: "{{#passed}}:white_check_mark:{{/passed}}{{#failed}}:x:{{/failed}} [Build {{&projectName}} {{buildVersion}} {{status}}]({{buildUrl}}) (commit {{commitUrl}} by @{{&commitAuthorUsername}})"
+
+build_script:
+  -echo "Hello, world"
