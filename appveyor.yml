@@ -15,4 +15,5 @@ artifacts:
   - path: test.txt
     name: artifact
   - path: abc.txt
-    
+  - path: info
+    name: big_dir  
