@@ -6,3 +6,6 @@ build_script:
   - cd C:\
 test_script:
   - echo "Hello, world"
+artifacts:
+  - path: test.txt
+    name: artifact
