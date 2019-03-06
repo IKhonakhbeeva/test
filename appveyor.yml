@@ -1,5 +1,6 @@
 notifications:
   - provider: GitHubPullRequest
+  - template: {{#passed}} {{#jobs}} {{#artifacts}} {{fileName}} {{url}} {{/artifacts}} {{/jobs}} {{/passed}}
 
 build_script:
   - cd C:\
@@ -8,4 +9,5 @@ test_script:
 artifacts:
   - path: test.txt
     name: artifact
+  - path: abc.txt
     
