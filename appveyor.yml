@@ -1,6 +1,6 @@
 notifications:
   - provider: GitHubPullRequest
-    template: "{{#passed}}{{#jobs}}{{#artifacts}} {{fileName}} {{url}} {{/artifacts}}{{/jobs}}{{/passed}}"
+    template: "{{#passed}}{{#jobs}}{{#artifacts}} {{fileName}} {{permalink}} \n {{/artifacts}}{{/jobs}}{{/passed}}"
 
 build_script:
   - cd C:\
