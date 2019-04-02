@@ -1,7 +1,9 @@
 environment:
   global:
-    host: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
-    password: TT5cKTVom4VTJrtg5NSU6g==
+    host:
+      secure: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
+    password:
+      secure: TT5cKTVom4VTJrtg5NSU6g==
 notifications:
   - provider: GitHubPullRequest
 
