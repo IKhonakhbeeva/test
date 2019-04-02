@@ -1,14 +1,13 @@
+environment:
+  global:
+    security: Qzaxod6w3LouqMgLRAao8g==
 notifications:
   - provider: GitHubPullRequest
 
 build_script:
   - cd C:\
 test_script:
-  - echo "hello"
-deploy:
-  - scp
-  - rsync
-  - sshpath
+  - echo $security
 artifacts:
   - path: test.txt
     name: artifact
