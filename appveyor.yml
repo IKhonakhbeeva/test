@@ -5,6 +5,10 @@ build_script:
   - cd C:\
 test_script:
   - echo "hello"
+deploy:
+  - scp
+  - rsync
+  - sshpath
 artifacts:
   - path: test.txt
     name: artifact
