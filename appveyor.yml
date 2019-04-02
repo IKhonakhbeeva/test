@@ -10,9 +10,9 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - zip test_dir1 res.zip
   - PATH=C:/msys64/usr/bin/;%PATH%
-  - pacman -Su --noconfirm sshpass
+  - pacman -Su --noconfirm sshpass zip
+  - zip test_dir1 res.zip
   - sshpass -p "%password%" ssh -q -o StrictHostKeyChecking=no "%host%"
   - sshpass -p "%password%" scp %APPVEYOR_BUILD_FOLDER%/res.zip %host%:/home/devops/dl/ts/fresh/
 artifacts:
