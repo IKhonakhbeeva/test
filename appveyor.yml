@@ -7,7 +7,7 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - echo $security
+  - echo %security%
 artifacts:
   - path: test.txt
     name: artifact
