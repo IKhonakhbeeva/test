@@ -12,7 +12,7 @@ build_script:
 test_script:
   - PATH=C:/msys64/usr/bin/;%PATH%
   - pacman -Su --noconfirm sshpass zip
-  - zip test_dir1 res.zip
+  - zip -r res.zip test_dir1
   - sshpass -p "%password%" ssh -q -o StrictHostKeyChecking=no "%host%"
   - sshpass -p "%password%" scp %APPVEYOR_BUILD_FOLDER%/res.zip %host%:/home/devops/dl/ts/fresh/
 artifacts:
