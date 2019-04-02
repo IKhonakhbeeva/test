@@ -8,8 +8,9 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - C:/msys64/usr/bin/pacman -Su --noconfirm sshpass
-  - C:/msys64/usr/bin/sshpass -p "%password%" C:/msys64/usr/bin/scp /t/test/test_dir1.zip %host%:/home/devops/dl/ts/fresh/
+  - PATH=C:/msys64/usr/bin/;%PATH%
+  - pacman -Su --noconfirm sshpass
+  - sshpass -p "%password%" scp /t/test/test_dir1.zip %host%:/home/devops/dl/ts/fresh/
 artifacts:
   - path: test.txt
     name: artifact
