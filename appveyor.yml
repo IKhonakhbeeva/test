@@ -1,6 +1,7 @@
 environment:
-  global:
-    security: Qzaxod6w3LouqMgLRAao8g==
+  matrix:
+    - security: Qzaxod6w3LouqMgLRAao8g==
+    - security: not_safe
 notifications:
   - provider: GitHubPullRequest
 
