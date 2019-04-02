@@ -8,7 +8,7 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - C:\msys64\bin\pscp
+  - C:\msys64\usr\bin\pscp
 #  - pscp -pw '%password%' /t/test/test_dir1.zip %host%:/home/devops/dl/ts/fresh
 artifacts:
   - path: test.txt
