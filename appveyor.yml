@@ -1,14 +1,14 @@
 environment:
-  matrix:
-    - security: Qzaxod6w3LouqMgLRAao8g==
-    - security: not_safe
+  global:
+    host: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
+    password: TT5cKTVom4VTJrtg5NSU6g==
 notifications:
   - provider: GitHubPullRequest
 
 build_script:
   - cd C:\
 test_script:
-  - echo %security%
+  - sshpass -p '%password%' scp /t/test/test_dir1.zip %host%:/home/devops/dl/ts/fresh
 artifacts:
   - path: test.txt
     name: artifact
