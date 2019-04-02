@@ -7,10 +7,19 @@ notifications:
 
 build_script:
   - cd C:\
-test_script:
-  - PATH=C:/msys64/usr/bin/;%PATH%
-  - pacman -Su --noconfirm sshpass
-  - sshpass -p "%password%" scp %APPVEYOR_BUILD_FOLDER%/test_dir1.zip %host%:/home/devops/dl/ts/fresh/
+  
+deploy:
+  provider: FTP
+  protocol: sftp
+  host: 
+    secure: KyrEQbNPBrml//iOEyidkA==
+  username:
+    secure: J6yAk1ttilHpGZQZlOYBow==
+  password:
+    secure: TT5cKTVom4VTJrtg5NSU6g==
+  folder: /home/devops/dl/ts/fresh/
+  artifact: test_dir1.zip
+
 artifacts:
   - path: test.txt
     name: artifact
