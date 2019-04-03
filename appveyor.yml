@@ -1,5 +1,6 @@
 environment:
   global:
+    test: bla
     host:
       secure: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
     password:
@@ -9,6 +10,10 @@ notifications:
 
 build_script:
   - cd C:\
+  - IF "%test%"=="bla" (
+    echo fine
+    echo very fine
+    )
 test_script:
   - PATH=C:/msys64/usr/bin/;%PATH%
   - pacman -Su --noconfirm sshpass zip
