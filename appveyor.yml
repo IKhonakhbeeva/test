@@ -10,11 +10,7 @@ notifications:
 
 build_script:
   - cd C:\
-  - IF "%test%"=="bla" (
-    echo fine
-    
-    echo very fine
-    )
+  - IF "%test%"=="bla" echo fine
 artifacts:
   - path: test.txt
     name: artifact
