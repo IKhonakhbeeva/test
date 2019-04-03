@@ -1,6 +1,6 @@
 environment:
   global:
-    test: blabla
+    test: bla
     host:
       secure: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
     password:
