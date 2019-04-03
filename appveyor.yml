@@ -14,13 +14,6 @@ build_script:
     echo fine
     echo very fine
     )
-test_script:
-  - PATH=C:/msys64/usr/bin/;%PATH%
-  - pacman -Su --noconfirm sshpass zip
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - zip -r res.zip test_dir1
-  - sshpass -p "%password%" ssh -q -o StrictHostKeyChecking=no "%host%"
-  - sshpass -p "%password%" scp res.zip %host%:/home/devops/dl/ts/fresh/
 artifacts:
   - path: test.txt
     name: artifact
