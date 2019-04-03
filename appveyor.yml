@@ -12,6 +12,7 @@ build_script:
   - cd C:\
   - IF "%test%"=="bla" (
     echo fine
+    
     echo very fine
     )
 artifacts:
