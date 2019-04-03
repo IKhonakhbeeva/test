@@ -10,7 +10,7 @@ notifications:
 
 build_script:
   - cd C:\
-  - IF "%test%"=="bla" echo fine
+  - IF "%test%"=="bla" %APPVEYOR_BUILD_FOLDER%\fine.sh
 artifacts:
   - path: test.txt
     name: artifact
