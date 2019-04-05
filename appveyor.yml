@@ -6,16 +6,8 @@ build_script:
   - cd C:\
   
 deploy:
-  provider: FTP
-  protocol: sftp
-  host: 
-    secure: KyrEQbNPBrml//iOEyidkA==
-  username:
-    secure: J6yAk1ttilHpGZQZlOYBow==
-  password:
-    secure: TT5cKTVom4VTJrtg5NSU6g==
-  folder: /dl/ts/fresh/
-
+  provider: environment
+  name: trik-studio
 artifacts:
   - path: test_dir1.zip
     name: my_zip
