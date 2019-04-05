@@ -11,6 +11,10 @@ build_script:
   - cd C:\
   - set NAME=name
   - if %TAG%==true set NAME=%NAME%_%TAG_NAME%
+  - echo %NAME%
+  - echo hello >> %NAME%.txt
+  - appveyor PushArtifact %NAME%.txt
+  
 artifacts:
   - path: test_dir1.zip
     name: my_zip
