@@ -15,11 +15,8 @@ deploy:
   password:
     secure: TT5cKTVom4VTJrtg5NSU6g==
   folder: /home/devops/dl/ts/fresh/
-  artifact: my_zip
 
 artifacts:
-  - path: test.txt
-    name: artifact
   - path: test_dir1.zip
     name: my_zip
     
