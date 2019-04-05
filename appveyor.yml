@@ -11,9 +11,10 @@ environment:
 build_script:
   - dir C:\Qt\
   - dir C:\Qt\Tools\
-  - set ZIP_NAME="trik-studio"
-  - if %TAG%==true ( set ZIP_NAME="%ZIP_NAME%_%TAG_NAME%" ) else ( set ZIP_NAME="%ZIP_NAME%-%APPVEYOR_REPO_BRANCH%" )
-  - set ZIP_NAME="%ZIP_NAME%_qt%QT%.zip"
+  - set ZIP_NAME='trik-studio'
+  - if %TAG%==true ( set ZIP_NAME='%ZIP_NAME%_%TAG_NAME%' ) else ( set ZIP_NAME='%ZIP_NAME%-%APPVEYOR_REPO_BRANCH%' )
+  - echo %ZIP_NAME%bla
+  - set ZIP_NAME='%ZIP_NAME%_qt%QT%.zip'
   - echo %ZIP_NAME%
 artifacts:
   - path: test_dir1.zip
