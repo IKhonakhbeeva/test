@@ -4,11 +4,14 @@ environment:
     
 build_script:
   - cd C:\
-  - echo bla
+  - echo %APPVEYOR_PROJECT_ID%
   
 deploy:
   provider: Environment
-  name: trik-studio
+  name: test
+  on:
+    APPVEYOR_PROJECT_ID: 
+  
 artifacts:
   - path: test_dir1.zip
     name: my_zip
