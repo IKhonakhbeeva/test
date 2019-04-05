@@ -10,7 +10,7 @@ deploy:
   provider: Environment
   name: test
   on:
-    APPVEYOR_PROJECT_ID: 
+    APPVEYOR_PROJECT_ID: 550147
   
 artifacts:
   - path: test_dir1.zip
