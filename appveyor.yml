@@ -10,7 +10,7 @@ environment:
 build_script:
   - cd C:\
   - set NAME=name
-  - if %TAG% set NAME=%NAME%_%TAG_NAME%
+  - if %TAG%==true set NAME=%NAME%_%TAG_NAME%
 artifacts:
   - path: test_dir1.zip
     name: my_zip
