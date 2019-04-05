@@ -4,6 +4,7 @@ environment:
     
 build_script:
   - cd C:\
+  - echo bla
   
 deploy:
   provider: Environment
