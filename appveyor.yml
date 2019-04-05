@@ -9,8 +9,8 @@ environment:
     
 build_script:
   - cd C:\
-  - export NAME=name
-  - if %TAG% export NAME=%NAME%_%TAG_NAME%
+  - set NAME=name
+  - if %TAG% set NAME=%NAME%_%TAG_NAME%
 artifacts:
   - path: test_dir1.zip
     name: my_zip
