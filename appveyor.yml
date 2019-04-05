@@ -1,6 +1,7 @@
 environment:
   global:
-    host: w/DTEzu1t/sp9qUGZlRiBD17VG4I4w1k9uPFf5agU18=
+    my_var:
+      secure: jw6zPox7McM4+aag8F8/Gw==
     
 build_script:
   - cd C:\
@@ -10,8 +11,7 @@ deploy:
   provider: Environment
   name: test
   on:
-    APPVEYOR_PROJECT_ID:
-      secure: jw6zPox7McM4+aag8F8/Gw==
+    APPVEYOR_PROJECT_ID: $(my_var)
   
 artifacts:
   - path: test_dir1.zip
