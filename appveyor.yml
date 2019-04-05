@@ -2,6 +2,7 @@ environment:
   global:
     my_var:
       secure: jw6zPox7McM4+aag8F8/Gw==
+    QT: 5.0
   matrix:
     - TAG: false    
     - TAG: true
@@ -10,9 +11,12 @@ environment:
 build_script:
   - dir C:\Qt\
   - dir C:\Qt\Tools\
-  
+  - set ZIP_NAME=trik-studio
+  - if %TAG%==true ( set ZIP_NAME=%ZIP_NAME%_%TAG_NAME% ) else ( set ZIP_NAME=%ZIP_NAME%-%APPVEYOR_REPO_BRANCH% )
+  - set ZIP_NAME=%ZIP_NAME%_qt%QT%.zip
+  - echo %ZIP_NAME%
 artifacts:
   - path: test_dir1.zip
     name: my_zip
   - path: test.txt
-    name: $(NAME)
+    name: $(ZIP_NAME)
