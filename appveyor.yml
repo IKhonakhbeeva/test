@@ -24,4 +24,4 @@ notifications:
   - provider: Email
     to:
       - khonakhbeeva@gmail.com
-   template: "{{#passed}}Download:\n{{#jobs}}{{name}}\n{{#artifacts}} [{{fileName}}]({{permalink}}) \n {{/artifacts}}{{/jobs}}{{/passed}}"
+    template: "{{#passed}}Download:\n{{#jobs}}{{name}}\n{{#artifacts}} [{{fileName}}]({{permalink}}) \n {{/artifacts}}{{/jobs}}{{/passed}}"
