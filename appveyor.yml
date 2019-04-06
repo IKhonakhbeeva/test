@@ -19,5 +19,4 @@ deploy:
   - provider: Environment
     name: test
 artifacts:
-  - path: test.txt
-    name: $(TXT_NAME)
+  - path: $(TXT_NAME)
