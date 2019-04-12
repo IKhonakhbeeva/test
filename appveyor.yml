@@ -18,7 +18,7 @@ build_script:
 deploy:
   - provider: Environment
     name: test
-    artifact: /testing*/
+    artifact: $(TXT_NAME)
 artifacts:
   - path: test.txt
   - path: $(TXT_NAME)
