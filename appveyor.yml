@@ -17,7 +17,7 @@ build_script:
   - echo helo >> %TXT_NAME%
 deploy:
   - provider: Environment
-    name: test-artifact
+    name: test
     artifact: testing*.txt
 artifacts:
   - path: test.txt
