@@ -11,14 +11,16 @@ environment:
 build_script:
   - dir C:\Qt\
   - dir C:\Qt\Tools\
-  - set TXT_NAME=test
+  - set TXT_NAME=testing
   - if %TAG%==true (set TXT_NAME=%TXT_NAME%_%TAG_NAME%) else (set TXT_NAME=%TXT_NAME%-%APPVEYOR_REPO_BRANCH%)
   - set TXT_NAME=%TXT_NAME%.txt
   - echo helo >> %TXT_NAME%
 deploy:
   - provider: Environment
     name: test
+    artifact: testing*.txt
 artifacts:
+  - path: test.txt
   - path: $(TXT_NAME)
 notifications:
   - provider: Email
