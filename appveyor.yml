@@ -22,8 +22,3 @@ deploy:
 artifacts:
   - path: test.txt
   - path: $(TXT_NAME)
-notifications:
-  - provider: Email
-    to:
-      - khonakhbeeva@gmail.com
-    message: "{{passed}}"
