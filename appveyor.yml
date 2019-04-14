@@ -3,19 +3,7 @@ environment:
     my_var:
       secure: jw6zPox7McM4+aag8F8/Gw==
     QT: 5.0
-  matrix:
-    - TAG: false
-    - TAG: true
-      TAG_NAME: version
 
 build_script:
-  - dir C:\Qt\
-  - dir C:\Qt\Tools\
-  - set TXT_NAME=testing
-  - if %TAG%==true (set TXT_NAME=%TXT_NAME%_%TAG_NAME%) else (set TXT_NAME=%TXT_NAME%-%APPVEYOR_REPO_BRANCH%)
-  - set TXT_NAME=%TXT_NAME%.txt
-  - echo helo >> %TXT_NAME%
+  - echo %APPVEYOR_REPO_COMMIT%
   - echo %APPVEYOR_REPO_COMMIT:~0,7%
-artifacts:
-  - path: test.txt
-  - path: $(TXT_NAME)
