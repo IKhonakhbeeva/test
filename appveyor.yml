@@ -8,5 +8,5 @@ build_script:
   - echo %APPVEYOR_REPO_COMMIT%
   - echo %APPVEYOR_REPO_COMMIT:~0,7%
   - git log >> log.txt
-artifact:
+artifacts:
   - log.txt
