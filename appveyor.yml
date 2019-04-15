@@ -5,4 +5,4 @@ environment:
     QT: 5.0
 
 build_script:
- - dir C:\Qt\5.12
+ - dir C:\Qt\Tools\
