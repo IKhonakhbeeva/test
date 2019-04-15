@@ -5,8 +5,4 @@ environment:
     QT: 5.0
 
 build_script:
-  - echo %APPVEYOR_REPO_COMMIT%
-  - echo %APPVEYOR_REPO_COMMIT:~0,7%
-  - git log >> log.txt
-artifacts:
-  - path: log.txt
+ - dir C:/Qt/5.12
