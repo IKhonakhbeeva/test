@@ -8,9 +8,9 @@ notifications:
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - git describe --always --broken --dirty --abbrev=6
-  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
-  - git describe --always --broken --dirty --abbrev=6
+  - git describe --always --dirty --abbrev=6
+  - set PATH=%QTDIR%\bin;%MINGW%\bin;%PATH%
+  - git describe --always --dirty --abbrev=6
 test_script:
   - echo "hello"
 artifacts:
