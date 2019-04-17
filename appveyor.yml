@@ -1,15 +1,17 @@
+environment:
+  global:
+    MINGW: C:\Qt\Tools\mingw530_32
+    QTDIR: C:\Qt\5.11\mingw53_32
+
 notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - cd C:\
+  - cd C:\%APPVEYOR_BUILD_DIR%
+  - git describe --always --broken --dirty --abbrev=6
+  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - git describe --always --broken --dirty --abbrev=6
 test_script:
   - echo "hello"
-deploy:
-  - scp
-  - rsync
-  - sshpath
 artifacts:
-  - path: test.txt
-    name: artifact
-    
+  - path: test.txt    
