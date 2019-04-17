@@ -7,7 +7,7 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - cd C:\%APPVEYOR_BUILD_DIR%
+  - cd C:\%APPVEYOR_BUILD_FOLDER%
   - git describe --always --broken --dirty --abbrev=6
   - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
   - git describe --always --broken --dirty --abbrev=6
