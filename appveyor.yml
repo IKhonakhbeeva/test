@@ -10,7 +10,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - which git | xargs cygpath -w
   - git describe --always --broken --dirty --abbrev=6
-  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - set PATH=C:\Program Files\Git\cmd\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
   - which git | xargs cygpath -w
   - git describe --always --broken --dirty --abbrev=6
 test_script:
