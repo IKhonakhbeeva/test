@@ -10,7 +10,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - which git.exe
   - git describe --always --broken --dirty --abbrev=6
-  - set PATH=%QTDIR%\bin;%MINGW%\bin;%PATH%
+  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
   - which git.exe
   - git describe --always --broken --dirty --abbrev=6
 test_script:
