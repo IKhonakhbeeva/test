@@ -12,5 +12,5 @@ curl -L -s -o $cache_dir/winscp.zip https://sourceforge.net/projects/winscp/file
 echo unzip:
 unzip -o $cache_dir/winscp.zip -d $cache_dir/winscp
 rm -f $cache_dir/winscp.zip
-cd winscp
+cd $cache_dir/winscp
 ls
