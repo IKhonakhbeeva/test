@@ -7,13 +7,13 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - echo %PATH%
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - which git | xargs cygpath -w
-  - which unzip | xargs cygpath -w
-  - set PATH=C:\Program Files\Git\usr\bin\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
-  - which git | xargs cygpath -w
-  - which unzip | xargs cygpath -w
+  - set PATH=C:\Program Files\Git\cmd\;C:\Program Files\Git\usr\bin\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - cd C:\Program Files\Git\usr\bin\
+  - dir
+  - cd %APPVEYOR_BUILD_FOLDER%  
+  - unzip test_dir1
+  - cd test_dir1
+  - dir
 test_script:
   - echo "hello"
 artifacts:
