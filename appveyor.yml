@@ -7,6 +7,7 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
+  - echo %PATH%
   - cd %APPVEYOR_BUILD_FOLDER%
   - which unzip | xargs cygpath -w
   - set PATH=C:\Program Files\Git\cmd\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
