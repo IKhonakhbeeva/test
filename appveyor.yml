@@ -8,9 +8,9 @@ notifications:
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - dir trik-studio-offline-* > %installer_name%
-  - echo %installer_name%
+  - mv trik-studio-*installer* trik-studio.txt
 test_script:
   - echo "hello"
 artifacts:
   - path: test.txt    
+  - path: trik-studio.txt
