@@ -7,11 +7,7 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - echo %PATH%
-  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
-  - pacman --verbose --noconfirm --sync curl unzip
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - script.sh
+  - ls installer/trik-studio-offline-*
 test_script:
   - echo "hello"
 artifacts:
