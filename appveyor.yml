@@ -7,7 +7,7 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - cd %APPVEYOR_BUILD_FOLDER%\installer
+  - cd %APPVEYOR_BUILD_FOLDER%
   - ls trik-studio-offline-*
 test_script:
   - echo "hello"
