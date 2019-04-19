@@ -9,12 +9,8 @@ notifications:
 build_script:
   - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
   - pacman --verbose --noconfirm --sync curl
-  - cd %APPVEYOR_BUILD_FOLDER%  
-  - curl -L -s -o winscp.zip https://sourceforge.net/projects/winscp/files/WinSCP/5.15/WinSCP-5.15-Portable.zip
-  - unzip -o winscp.zip -d winscp
-  - rm -f winscp.zip
-  - cd winscp
-  - dir
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - script.sh
 test_script:
   - echo "hello"
 artifacts:
