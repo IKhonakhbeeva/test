@@ -9,8 +9,10 @@ notifications:
 build_script:
   - echo %PATH%
   - cd %APPVEYOR_BUILD_FOLDER%
+  - which git | xargs cygpath -w
   - which unzip | xargs cygpath -w
-  - set PATH=C:\Program Files\Git\cmd\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - set PATH=C:\Program Files\Git\usr\bin\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - which git | xargs cygpath -w
   - which unzip | xargs cygpath -w
 test_script:
   - echo "hello"
