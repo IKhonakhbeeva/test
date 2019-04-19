@@ -11,7 +11,8 @@ build_script:
   - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
   - pacman --verbose --noconfirm --sync curl
   - cd %APPVEYOR_BUILD_FOLDER%
-  - set PATH=C:\Program Files\Git\usr\bin;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - set PATH=%PATH:%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;=%
+  - echo %PATH%
   - script.sh
 test_script:
   - echo "hello"
