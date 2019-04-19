@@ -7,12 +7,13 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - set PATH=C:\Program Files\Git\cmd\;C:\Program Files\Git\usr\bin\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
-  - cd C:\Program Files\Git\usr\bin\
-  - dir
+  - set PATH=%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
+  - pacman --verbose --noconfirm --sync curl
   - cd %APPVEYOR_BUILD_FOLDER%  
-  - unzip test_dir1
-  - cd test_dir1
+  - curl -L -s -o $cache_dir/winscp.zip https://sourceforge.net/projects/winscp/files/WinSCP/5.15/WinSCP-5.15-Portable.zip
+  - unzip -o winscp.zip -d winscp
+  - rm -f winscp.zip
+  - cd winscp
   - dir
 test_script:
   - echo "hello"
