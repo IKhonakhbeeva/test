@@ -8,9 +8,9 @@ notifications:
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - which unzip
+  - which unzip | xargs cygpath -w
   - set PATH=C:\Program Files\Git\cmd\;%QTDIR%\bin;%MINGW%\bin;C:\msys64\usr\bin;%PATH%
-  - which unzip
+  - which unzip | xargs cygpath -w
 test_script:
   - echo "hello"
 artifacts:
