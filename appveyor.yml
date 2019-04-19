@@ -8,7 +8,7 @@ notifications:
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - set installer_name=$(ls trik-studio-offline-*)
+  - ls trik-studio-offline-* > %installer_name%
   - echo %installer_name%
 test_script:
   - echo "hello"
