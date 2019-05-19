@@ -5,6 +5,7 @@ build_script:
   - cd C:\
 test_script:
   - echo "hello"
+  - echo %PKG_CONFIG_PATH%
 deploy:
   - scp
   - rsync
