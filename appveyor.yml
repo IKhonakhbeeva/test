@@ -6,8 +6,8 @@ build_script:
 test_script:
   - echo "hello"
   - echo "%PKG_CONFIG_PATH%"
-  - reg query HKEY_CURRENT_USER\Software\pkgconfig
-  - reg query HKEY_LOCAL_MACHINE\Software\pkgconfig
+  - reg query HKEY_CURRENT_USER\Software
+  - reg query HKEY_LOCAL_MACHINE\Software
 artifacts:
   - path: test.txt
     name: artifact
