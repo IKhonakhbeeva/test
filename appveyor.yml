@@ -5,7 +5,7 @@ build_script:
   - cd C:\
 test_script:
   - echo "hello"
-  - echo %PKG_CONFIG_PATH%
+  - echo "%PKG_CONFIG_PATH%"
 artifacts:
   - path: test.txt
     name: artifact
