@@ -6,10 +6,6 @@ build_script:
 test_script:
   - echo "hello"
   - echo %PKG_CONFIG_PATH%
-deploy:
-  - scp
-  - rsync
-  - sshpath
 artifacts:
   - path: test.txt
     name: artifact
