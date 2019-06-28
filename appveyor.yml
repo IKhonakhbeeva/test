@@ -4,5 +4,5 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - echo "hello"
+  - echo %APPVEYOR_REPO_COMMIT_MESSAGE:[INSTALLER]=%
   - if %APPVEYOR_REPO_COMMIT_MESSAGE:[INSTALLER]=% EQU %APPVEYOR_REPO_COMMIT_MESSAGE% (echo has not [installer] in name)
