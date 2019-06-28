@@ -5,11 +5,4 @@ build_script:
   - cd C:\
 test_script:
   - echo "hello"
-deploy:
-  - scp
-  - rsync
-  - sshpath
-artifacts:
-  - path: test.txt
-    name: artifact
-    
+  - if %APPVEYOR_REPO_COMMIT_MESSAGE:[INSTALLER]=% EQU %APPVEYOR_REPO_COMMIT_MESSAGE% (echo has not [installer] in name)
