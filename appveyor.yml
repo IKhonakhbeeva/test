@@ -4,5 +4,4 @@ notifications:
 build_script:
   - cd C:\
 test_script:
-  - set MY_VAR=true
-  - if "%MY_VAR%" EQU "true" (echo hello) else (echo bye)
+  - echo commit %APPVEYOR_REPO_COMMIT_MESSAGE%
