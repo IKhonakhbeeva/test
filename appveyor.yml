@@ -5,3 +5,4 @@ build_script:
   - cd C:\
 test_script:
   - echo commit %APPVEYOR_REPO_COMMIT_MESSAGE%
+  - echo first
