@@ -2,8 +2,10 @@ notifications:
   - provider: GitHubPullRequest
 
 build_script:
-  - cd C:\
-test_script:
-  - echo commit %APPVEYOR_REPO_COMMIT_MESSAGE%
-  - echo first
-  - echo second
+  - set MY_ARTIFACT=new_cool.txt
+  - appveyor PushArtifact %MY_ARTIFACT%
+deploy:
+  - provider: GitHub
+    artifact: $(MY_ARTIFACT)
+    on:
+      APPVEYOR_REPO_TAG: true
