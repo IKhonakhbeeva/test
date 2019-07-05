@@ -3,10 +3,13 @@ notifications:
 
 build_script:
   - set MY_ARTIFACT=new_cool.txt
+  - cd %APPVEYOR_BUILD_FOLDER%
   - ren test.txt %MY_ARTIFACT%
   - appveyor PushArtifact %MY_ARTIFACT%
+  - appveyor PushArtifact test_dir1.zip
 deploy:
-  - provider: GitHub
+  - provider: Environment
+    name: push_on_tag
     artifact: $(MY_ARTIFACT)
     on:
       APPVEYOR_REPO_TAG: true
