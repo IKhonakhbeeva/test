@@ -3,6 +3,7 @@ notifications:
 
 build_script:
   - set MY_ARTIFACT=new_cool.txt
+  - echo hello
   - cd %APPVEYOR_BUILD_FOLDER%
   - ren test.txt %MY_ARTIFACT%
   - appveyor PushArtifact %MY_ARTIFACT%
