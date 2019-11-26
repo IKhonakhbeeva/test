@@ -1,4 +1,6 @@
 build_script:
   - cd C:\
 test_script:
-  - dir C:\Python37\Lib
+  - dir C:\Python37\Lib\
+  - cd C:\Python37
+  - appveyor PushArtifact Lib
