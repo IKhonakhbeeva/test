@@ -1,8 +1,4 @@
-notifications:
-  - provider: GitHubPullRequest
-
 build_script:
   - cd C:\
 test_script:
-  - set MY_VAR=true
-  - if "%MY_VAR%" EQU "true" (echo hello) else (echo bye)
+  - dir C:\Python37\Lib
