@@ -3,4 +3,4 @@ build_script:
 test_script:
   - dir C:\Python37\Lib\
 artifacts:
-  - path: C:\Python37\Lib
+  - path: ..\..\Python37\Lib\
