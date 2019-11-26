@@ -1,6 +1,4 @@
 build_script:
-  - cd C:\
-test_script:
-  - dir C:\Python37\Lib\
+  - 7z a myZip.zip C:\Python37\Lib\
 artifacts:
-  - path: ..\..\Python37\Lib\
+  - path: myZip.zip
