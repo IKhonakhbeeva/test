@@ -47,6 +47,8 @@ jobs:
           echo hello >> test1.txt
           echo world >> test2.txt
           echo nope >> test3.nope
+          mkdir installer
+          echo install >> iaminstaller.txt
 
       - name: Deploy
-        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -ve "ssh -o StrictHostKeyChecking=no" *.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
+        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -ve "ssh -o StrictHostKeyChecking=no" installer/iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
