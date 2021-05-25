@@ -44,4 +44,4 @@ jobs:
         run: echo hello >> test.txt
 
       - name: Deploy
-        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync test.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
+        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -v test.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
