@@ -31,10 +31,10 @@ jobs:
 
       - name: Deploy
 #        uses: easingthemes/ssh-deploy@v2.1.5
-        uses: appleboy/scp-action@master
+        uses: kostya-ten/ssh-server-deploy@v4
         with:
           host: ${{ secrets.DL_HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.DL_PASSWORD }}
-          source: "test.txt"
-          target: "dl/test"
+          scp_source: "test.txt"
+          scp_target: "~/dl/test"
