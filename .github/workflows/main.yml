@@ -31,10 +31,10 @@ jobs:
 
       - name: Deploy
 #        uses: easingthemes/ssh-deploy@v2.1.5
-        uses: kostya-ten/ssh-server-deploy@v4
+        uses: garygrossgarten/github-action-scp@release
         with:
           host: ${{ secrets.DL_HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.DL_PASSWORD }}
-          scp_source: "test.txt"
-          scp_target: "~/dl/test"
+          local: "test.txt"
+          remote: "~/dl/test/test_with_new_name.txt"
