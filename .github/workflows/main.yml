@@ -48,6 +48,7 @@ jobs:
           echo world >> test2.txt
           echo nope >> test3.nope
           mkdir installer
+          cd installer
           echo install >> iaminstaller.txt
 
       - name: Deploy
