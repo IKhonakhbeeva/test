@@ -1,0 +1,58 @@
+name: GHA CI
+on:
+  push:
+    tags:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+
+      - name: Cancel Previous Workflow Runs
+        uses: n1hility/cancel-previous-runs@v2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          path-type: inherit
+          msystem: MINGW32
+
+      - name: Download packages to msys2
+        run: |
+            ARCH=32
+            PLATFORM=i686
+            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
+
+      - name: Configure git
+        shell: bash
+        run: |
+            git config --global core.symlinks true
+            git config --global core.autocrlf true
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          
+      - name: Create test file
+        run: echo hello >> test.txt
+
+      - name: Deploy
+#        uses: easingthemes/ssh-deploy@v2.1.5
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DL_HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.DL_PASSWORD }}
+          source: "test.txt"
+          target: "dl/test"
