@@ -12,44 +12,19 @@ jobs:
       fail-fast: false
     defaults:
       run:
-        shell: msys2 {0}
+        shell: bash
     steps:
 
       - name: Cancel Previous Workflow Runs
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup msys2
-        uses: msys2/setup-msys2@v2
-        with:
-          path-type: inherit
-          msystem: MINGW32
-
-      - name: Download packages to msys2
-        run: |
-            ARCH=32
-            PLATFORM=i686
-            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
-            wget http://repo.msys2.org/msys/x86_64/sshpass-1.06-1-x86_64.pkg.tar.xz
-            pacman --verbose --noconfirm -U ./sshpass-1.06-1-x86_64.pkg.tar.xz
-            ls
-            rm ./sshpass-1.06-1-x86_64.pkg.tar.xz
-            ls
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
           
       - name: Create test file
         run: |
-          echo hello >> test1.txt
-          echo world >> test2.txt
-          echo nope >> test3.nope
-          mkdir installer
-          cd installer
-          echo install >> iaminstaller.txt
+          echo ref is ${{ github.ref }}
+          echo head_ref is ${{ github.head_ref }}
+          echo base_ref is ${{ github.base_ref }}
 
       - name: Deploy
         run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -ve "ssh -o StrictHostKeyChecking=no" installer/iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
