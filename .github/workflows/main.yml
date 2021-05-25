@@ -33,7 +33,9 @@ jobs:
             pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
             wget http://repo.msys2.org/msys/x86_64/sshpass-1.06-1-x86_64.pkg.tar.xz
             pacman --verbose --noconfirm -U ./sshpass-1.06-1-x86_64.pkg.tar.xz
-#            rm ./sshpass-1.06-1-x86_64.pkg.tar.xz
+            ls
+            rm ./sshpass-1.06-1-x86_64.pkg.tar.xz
+            ls
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -44,4 +46,4 @@ jobs:
         run: echo hello >> test.txt
 
       - name: Deploy
-        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -v test.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
+        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -v "ssh -o StrictHostKeyChecking=no" test.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
