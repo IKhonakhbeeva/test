@@ -19,12 +19,10 @@ jobs:
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Create test file
-        run: |
-          echo ref is ${{ github.ref }}
-          echo head_ref is ${{ github.head_ref }}
-          echo base_ref is ${{ github.base_ref }}
 
-      - name: Deploy
-        run: sshpass -p ${{ secrets.DL_PASSWORD }} rsync -ve "ssh -o StrictHostKeyChecking=no" installer/iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x          
+          
+      - name: ECHO
+        run: |
+          echo ref is ${{ env.GITHUB_REF_SLUG }}
