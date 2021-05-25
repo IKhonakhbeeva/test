@@ -12,13 +12,25 @@ jobs:
       fail-fast: false
     defaults:
       run:
-        shell: bash
+        shell: msys2 {0}
     steps:
 
       - name: Cancel Previous Workflow Runs
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          path-type: inherit
+          msystem: MINGW32
+
+      - name: Download packages to msys2
+        run: |
+            ARCH=32
+            PLATFORM=i686
+            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -30,11 +42,4 @@ jobs:
         run: echo hello >> test.txt
 
       - name: Deploy
-#        uses: easingthemes/ssh-deploy@v2.1.5
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          host: ${{ secrets.DL_HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.DL_PASSWORD }}
-          local: "test.txt"
-          remote: "~/dl/test/test_with_new_name.txt"
+      - run: sshpass -p ${{ DL_PASSWORD }} rsync test.txt ${{ DL_USERNAME }}@${{ DL_HOST }}:~/dl/test/
