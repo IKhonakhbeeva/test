@@ -89,6 +89,6 @@ jobs:
         shell: pwsh
         run: |
             cd D:\TrikStudio
-            echo $GITHUB_WORKSPACE\fieldstest.py
-            dir $GITHUB_WORKSPACE
-            python "$GITHUB_WORKSPACE\fieldstest.py" 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
+            echo ${{ github.workspace }}\fieldstest.py
+            dir ${{ github.workspace }}
+            python "${{ github.workspace }}\fieldstest.py" 2D-model.exe "${{ github.workspace }}\testing_small"
