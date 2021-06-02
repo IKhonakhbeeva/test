@@ -14,8 +14,11 @@ if __name__=='__main__':
 	for f in list(get_files(sys.argv[2])):
 		begin_time = datetime.datetime.now()
 		output = subprocess.run([bin_path, '-b', '-s', '5', f], capture_output=True, shell=False)
-		print("Test %s. " % f + "Return code : %d. " % output.returncode + "Message: %s" % output.stderr.decode('1251'))
+		print("Test", f)
+		print("Return code :", output.returncode)
+		print(output.stderr.decode('1251').strip())
 		print(datetime.datetime.now() - begin_time)
+		print()
 		if (output.returncode != 0):
 			print("Solution failed with return code %d " % output.returncode)
 			num_failed_tests += 1
