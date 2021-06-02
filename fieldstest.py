@@ -8,8 +8,10 @@ def get_files(dir_path: str) -> Iterable[str]:
 	return sorted(os.path.join(d, file) for d, ns, f in os.walk(os.path.expanduser(dir_path)) for file in f)
 	
 if __name__=='__main__':
+	print(sys.getfilesystemencoding())
 	bin_path = sys.argv[1]
 	num_failed_tests = 0
+	print(get_files(sys.argv[2]))
 	print("Start test")
 	for f in list(get_files(sys.argv[2])):
 		begin_time = datetime.datetime.now()
