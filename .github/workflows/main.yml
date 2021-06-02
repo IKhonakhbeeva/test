@@ -10,6 +10,16 @@ jobs:
     runs-on: windows-latest
     strategy:
       fail-fast: false
+      matrix:
+        include:
+#          - qt-version: '5.12.10'
+#            mingw-version: 7.3
+#            mingw-short-version: 73
+#            python-version: 3.8
+          - qt-version: '5.15.2'
+            mingw-version: 8.1
+            mingw-short-version: 81
+            python-version: 3.8
     defaults:
       run:
         shell: msys2 {0}
