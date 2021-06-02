@@ -86,7 +86,7 @@ jobs:
             ls $GITHUB_WORKSPACE/testing_small
 
       - name: Tests
-        shell: bash
+        shell: pwsh
         run: |
             cd D:\TrikStudio
             echo $GITHUB_WORKSPACE\fieldstest.py
