@@ -17,7 +17,7 @@ if __name__=='__main__':
 		output = subprocess.run([bin_path, '-b', '-s', '5', f], capture_output=True, shell=False)
 		print("Test", f)
 		print("Return code :", output.returncode)
-		print(output.stderr.decode('1251').strip())
+		print(output.stderr.strip())
 		print(datetime.datetime.now() - begin_time)
 		print()
 		if (output.returncode != 0):
