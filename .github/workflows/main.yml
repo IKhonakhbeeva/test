@@ -77,7 +77,7 @@ jobs:
 
       - name: Install Trik Studio
         shell: cmd
-        run: installer/reinstall-trik-studio.cmd --no-pause --installer installer.exe --target-path ${{ env.BUILD_DIR }}\TrikStudio
+        run: installer/reinstall-trik-studio.cmd --no-pause --installer installer.exe --target-path $GITHUB_WORKSPACE\TrikStudio
 
       - name: Download tests
         run: |
@@ -89,5 +89,5 @@ jobs:
         run: |
             echo "$PATH"
             echo ------
-            cd ${{ env.BUILD_DIR }}\TrikStudio
+            cd $GITHUB_WORKSPACE\TrikStudio
             python -X utf-8 "$GITHUB_WORKSPACE\buildScripts\tests\fieldstest.py" 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
