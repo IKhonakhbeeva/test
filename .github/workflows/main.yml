@@ -88,6 +88,4 @@ jobs:
       - name: Tests
         run: |
             cd D:\TrikStudio
-            echo ${{ github.workspace }}\fieldstest.py
-            dir ${{ github.workspace }}
             python "${{ github.workspace }}\fieldstest.py" 2D-model.exe "${{ github.workspace }}\testing_small"
