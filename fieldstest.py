@@ -8,7 +8,7 @@ def get_files(dir_path: str) -> Iterable[str]:
 	return sorted(os.path.join(d, file) for d, ns, f in os.walk(os.path.expanduser(dir_path)) for file in f)
 	
 if __name__=='__main__':
-	print(sys.getfilesystemencoding())
+	sys.stdout.reconfigure(encoding='utf-8')
 	bin_path = sys.argv[1]
 	num_failed_tests = 0
 	print("Start test")
