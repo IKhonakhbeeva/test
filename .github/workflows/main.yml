@@ -89,4 +89,6 @@ jobs:
         shell: cmd
         run: |
             cd D:\TrikStudio
-            python "$GITHUB_WORKSPACE\fieldstest.py" 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
+            echo $GITHUB_WORKSPACE\fieldstest.py
+            dir $GITHUB_WORKSPACE
+            python $GITHUB_WORKSPACE\fieldstest.py 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
