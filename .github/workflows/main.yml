@@ -90,4 +90,4 @@ jobs:
             echo "$PATH"
             echo ------
             cd "/d/TrikStudio"
-            python -X utf-8 "$GITHUB_WORKSPACE\buildScripts\tests\fieldstest.py" 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
+            python -X utf-8 "$GITHUB_WORKSPACE\fieldstest.py" 2D-model.exe "$GITHUB_WORKSPACE\testing_small"
