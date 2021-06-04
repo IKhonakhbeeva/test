@@ -31,8 +31,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Error
+        id: error_step
         continue-on-error: true
         run: exit 1
-        
+
       - name: Echo
         run: echo After error
+
+      - name: Check errors
+        if: ${{ steps.error_step.outcome == "failure" }}
+        run: exit 1
