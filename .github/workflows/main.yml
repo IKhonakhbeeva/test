@@ -22,7 +22,7 @@ jobs:
             python-version: 3.8
     defaults:
       run:
-        shell: msys2 {0}
+        shell: bash
     steps:
 
       - name: Cancel Previous Workflow Runs
@@ -30,62 +30,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup msys2
-        uses: msys2/setup-msys2@v2
-        with:
-          path-type: inherit
-          msystem: MINGW32
-
-      - name: Download packages to msys2
-        run: |
-            ARCH=32
-            PLATFORM=i686
-            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
-
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          dir: C:\
-          version: ${{matrix.qt-version}}
-          arch: win32_mingw${{matrix.mingw-short-version}}
-          modules: 'qtscript qtsvg'
-          tools: 'tools_ifw,4.1,qt.tools.ifw.41 tools_mingw,${{matrix.mingw-version}},qt.tools.win32_mingw${{matrix.mingw-short-version}}0'
-          extra: '--external 7z'
-
-      - name: Set up Python ${{matrix.python-version}}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{matrix.python-version}}
-          architecture: 'x86'
-
-      - name: Update PATH
-        run: |
-             set -xue
-             cygpath -w "${IQTA_TOOLS}/mingw${{matrix.mingw-short-version}}0_32/bin" >> $GITHUB_PATH
-             cygpath -w "${pythonLocation}" >> $GITHUB_PATH
-             cygpath -w "${Qt5_Dir}/bin" >> $GITHUB_PATH
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
-
-      - name: Download installer
-        run: |
-            curl --output installer.exe "https://dl.trikset.com/ts/fresh/installer/trik-studio-master-i686-installer.exe"
-
-      - name: Install Trik Studio
-        shell: cmd
-        run: installer/reinstall-trik-studio.cmd --no-pause --installer installer.exe --target-path D:\TrikStudio
-
-      - name: Download tests
-        run: |
-            curl --output tests.7z "https://dl.trikset.com/edu/.solutions20200701/testing_small.7z"
-            7z x tests.7z
-            ls $GITHUB_WORKSPACE/testing_small
-
-      - name: Tests
-        run: |
-            cd D:\TrikStudio
-            python "${{ github.workspace }}\fieldstest.py" 2D-model.exe "${{ github.workspace }}\testing_small"
+      - name: Error
+        continue-on-error: true
+        run: exit 1
+        
+      - name: Echo
+        run: echo After error
