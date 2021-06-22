@@ -12,17 +12,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-#          - qt-version: '5.12.10'
-#            mingw-version: 7.3
-#            mingw-short-version: 73
-#            python-version: 3.8
           - qt-version: '5.15.2'
             mingw-version: 8.1
             mingw-short-version: 81
             python-version: 3.8
     defaults:
       run:
-        shell: bash
+        shell: msys2 {0}
     steps:
 
       - name: Cancel Previous Workflow Runs
@@ -30,14 +26,24 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Error
-        id: error_step
-        continue-on-error: true
-        run: exit 1
+      - name: Setup msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          path-type: inherit
+          msystem: MINGW32
 
-      - name: Echo
-        run: echo After error
+      - name: Download packages to msys2
+        run: |
+            ARCH=32
+            PLATFORM=i686
+            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
 
-      - name: Check errors
-        if: ${{ steps.error_step.outcome == 'failure' }}
-        run: exit 1
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          dir: C:\
+          version: ${{matrix.qt-version}}
+          arch: win32_mingw${{matrix.mingw-short-version}}
+          modules: 'qtscript qtsvg'
+          tools: 'tools_ifw,4.1,qt.tools.ifw.41 tools_mingw,${{matrix.mingw-version}},qt.tools.win32_mingw${{matrix.mingw-short-version}}0'
+          extra: '--external 7z'
