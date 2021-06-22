@@ -45,5 +45,12 @@ jobs:
           version: ${{matrix.qt-version}}
           arch: win32_mingw${{matrix.mingw-short-version}}
           modules: 'qtsvg qtscript'
+          extra: '--external 7z'
+
+      - name: Install Qt tools
+        uses: jurplel/install-qt-action@v2
+        with:
+          dir: C:\
+          tools-only: true
           tools: 'tools_ifw,4.1,qt.tools.ifw.41 tools_mingw,${{matrix.mingw-version}},qt.tools.win32_mingw${{matrix.mingw-short-version}}0'
           extra: '--external 7z'
