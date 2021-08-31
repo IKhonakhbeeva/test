@@ -18,7 +18,8 @@ jobs:
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
       - name: Setup msys2
         uses: msys2/setup-msys2@v2
         with:
@@ -31,4 +32,4 @@ jobs:
         if: true
         run: echo "OUTPUT_NAME=new_output" >> $GITHUB_ENV
       - name: ECHO
-        run: echo hello ${{ github.event_name }} ${{ env.OUTPUT_NAME }}
+        run: echo hello ${{ env.GITHUB_REF_SLUG }} ${{ env.OUTPUT_NAME }}
