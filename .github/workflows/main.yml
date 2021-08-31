@@ -22,5 +22,4 @@ jobs:
       - name: NEW
         run: echo "OUTPUT_NAME=new_output" >> $GITHUB_ENV
       - name: ECHO
-        run: echo ${{ env.OUTPUT_NAME }}
-        
+        run: echo hello ${{ env.OUTPUT_NAME }}
