@@ -10,12 +10,20 @@ jobs:
     runs-on: windows-latest
     strategy:
       fail-fast: false
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
-
       - name: Cancel Previous Workflow Runs
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          path-type: inherit
+          msystem: MINGW32
 
       - name: OLD
         run: echo "OUTPUT_NAME=old_output" >> $GITHUB_ENV
