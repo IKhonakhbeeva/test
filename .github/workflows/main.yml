@@ -17,5 +17,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: OLD
+        run: echo "OUTPUT_NAME=old_output" >> $GITHUB_ENV
+      - name: NEW
+        run: echo "OUTPUT_NAME=new_output" >> $GITHUB_ENV
       - name: ECHO
-        run: echo HELLO
+        run: echo ${{ env.OUTPUT_NAME }}
+        
