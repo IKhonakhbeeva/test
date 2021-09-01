@@ -18,6 +18,11 @@ jobs:
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Setup msys2
@@ -26,9 +31,7 @@ jobs:
           path-type: inherit
           msystem: MINGW32
       - name: Get tag
-        run: |
-            cd $GITHUB_WORKSPACE
-            echo "CURRENT_TAG=$(git tag --contains HEAD)" >> $GITHUB_ENV
+        run: echo "CURRENT_TAG=$(git tag --contains HEAD)" >> $GITHUB_ENV
       - name: Check tag
         if: ${{ env.CURRENT_TAG != ''}}
         run: echo "GITHUB_REF_SLUG=${{ env.CURRENT_TAG }}" >> $GITHUB_ENV
