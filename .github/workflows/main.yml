@@ -25,11 +25,10 @@ jobs:
         with:
           path-type: inherit
           msystem: MINGW32
-
-      - name: OLD
-        run: echo "OUTPUT_NAME=old_output" >> $GITHUB_ENV
-      - name: NEW
-        if: true
-        run: echo "OUTPUT_NAME=new_output" >> $GITHUB_ENV
+      - name: Get tag
+        run: echo "CURRENT_TAG=$(git tag --contains HEAD)" >> $GITHUB_ENV
+      - name: Check tag
+        if: ${{ env.CURRENT_TAG != ''}}
+        run: echo "GITHUB_REF_SLUG=${{ env.CURRENT_TAG }}" >> $GITHUB_ENV
       - name: ECHO
-        run: echo hello ${{ env.GITHUB_REF_SLUG }} ${{ env.OUTPUT_NAME }}
+        run: echo hello ${{ env.OUTPUT_NAME }}
