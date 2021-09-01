@@ -31,4 +31,4 @@ jobs:
         if: ${{ env.CURRENT_TAG != ''}}
         run: echo "GITHUB_REF_SLUG=${{ env.CURRENT_TAG }}" >> $GITHUB_ENV
       - name: ECHO
-        run: echo hello ${{ env.OUTPUT_NAME }}
+        run: echo hello ${{ env.GITHUB_REF_SLUG }}
