@@ -1,7 +1,29 @@
 name: GHA CI
 on:
   push:
+    branches-ignore:
+      - 'dependabot**'
     tags:
+    paths-ignore:
+      - '**/lsan.supp'
+      - 'buildScripts/travis/*'
+      - 'buildScripts/azure/*'
+      - 'buildScripts/docker/*'
+      - 'azure-pipelines.yml'
+      - '.cirrus.yml'
+      - '.travis.yml'
+      - '.mergify.yml'
+      - 'Brewfile'
+      - '**/*.html'
+      - '**/*.txt'
+      - '**/*.md'
+      - 'installer/packages/**/meta/prebuild-mac.sh'
+      - 'installer/packages/**/meta/prebuild-linux-gnu.sh'
+      - '**/*.dockerfile'
+      - '**/*.Dockerfile'
+      - '**/Dockerfile'
+      - '**/Dockerfile.*'
+      - 'plugins/robots/checker/scripts/build-checker-installer.sh'
   pull_request:
   workflow_dispatch:
 
