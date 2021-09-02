@@ -30,6 +30,8 @@ jobs:
         with:
           path-type: inherit
           msystem: MINGW32
+      - name: Echo tag
+        run: git tag --contains HEAD
       - name: Get tag
         run: echo "CURRENT_TAG=$(git tag --contains HEAD)" >> $GITHUB_ENV
       - name: Check tag
