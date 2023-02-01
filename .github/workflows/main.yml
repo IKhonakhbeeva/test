@@ -70,5 +70,5 @@ jobs:
           echo install >> iaminstaller.txt
 
       - name: Deploy
-#        run: ./exp ${{ secrets.DL_PASSWORD }} rsync -v --rsh="ssh -o StrictHostKeyChecking=no" iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
-        run: ./exp ${{ secrets.DL_PASSWORD }} ssh -tt -o StrictHostKeyChecking=no ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}
+        run: ./exp ${{ secrets.DL_PASSWORD }} rsync -v --rsh="ssh -tt -o StrictHostKeyChecking=no" iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
+#        run: ./exp ${{ secrets.DL_PASSWORD }} ssh -tt -o StrictHostKeyChecking=no ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}
