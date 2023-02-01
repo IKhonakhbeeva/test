@@ -37,28 +37,36 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
+
       - name: Cancel Previous Workflow Runs
         uses: n1hility/cancel-previous-runs@v2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v3.x
+
       - name: Setup msys2
         uses: msys2/setup-msys2@v2
         with:
           path-type: inherit
           msystem: MINGW32
-      - name: Echo tag
-        run: git tag --contains HEAD
-      - name: Get tag
-        run: echo "CURRENT_TAG=$(git tag --contains HEAD)" >> $GITHUB_ENV
-      - name: Check tag
-        if: ${{ env.CURRENT_TAG != ''}}
-        run: echo "GITHUB_REF_SLUG=${{ env.CURRENT_TAG }}" >> $GITHUB_ENV
-      - name: ECHO
-        run: echo hello ${{ env.GITHUB_REF_SLUG }}
+
+      - name: Download packages to msys2
+        run: |
+            ARCH=32
+            PLATFORM=i686
+            pacman --verbose --noconfirm -S msys/zlib-devel dos2unix ccache rsync unzip sshpass mingw$ARCH/mingw-w64-$PLATFORM-libzip mingw$ARCH/mingw-w64-$PLATFORM-libusb mingw$ARCH/mingw-w64-$PLATFORM-zlib mingw$ARCH/mingw-w64-$PLATFORM-pkg-config
+
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Create test file
+        run: |
+          echo install >> iaminstaller.txt
+
+      - name: Deploy
+        run: rsync --rsh="sshpass -p ${{ secrets.DL_PASSWORD }} ssh -o StrictHostKeyChecking=no" iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
