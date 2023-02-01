@@ -73,7 +73,4 @@ jobs:
 #        run: ./exp ${{ secrets.DL_PASSWORD }} rsync -v --rsh="ssh -tt -o StrictHostKeyChecking=no" iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test/
 #        run: ./exp ${{ secrets.DL_PASSWORD }} ssh -tt -o StrictHostKeyChecking=no ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}
         run: |
-          ls -la /dev/tty
-          chmod 666 /dev/tty
-          ls -la /dev/tty
-          ssh -v -o StrictHostKeyChecking=no -o PasswordAuthentication=yes ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}
+          ssh -tv -o StrictHostKeyChecking=no ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}
