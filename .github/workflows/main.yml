@@ -71,5 +71,6 @@ jobs:
 
       - name: Deploy
         run: |
+            install -m 600 -D /dev/null ~/.ssh/id_rsa
             echo "${{ secrets.DL_SSH_KEY }}" > ~/.ssh/id_rsa
             rsync -v --rsh="ssh -o StrictHostKeyChecking=no" iaminstaller.txt ${{ secrets.DL_USERNAME }}@${{ secrets.DL_HOST }}:~/dl/test
